@@ -23,3 +23,22 @@
 - [ ] **3. Rate Limiting & Bot Protection (Prevents DoS):** Apply rate limiting on high-risk endpoints like `/login` and `/password-reset`.
 - [ ] **4. Error Handling & Logging (Prevents Information Disclosure & Repudiation):** Disable verbose debug error messages in production and ensure critical actions write to secure audit logs.
 - [ ] **5. Transport Layer Security (TLS 1.3):** Ensure all data in transit is fully encrypted using strong SSL/TLS certificates.
+
+- [ ] ---
+# EdVyro Cyber Security Internship - Task 03: Secure Authentication Lab
+
+## 1. Password Hashing & Input Validation
+- **Password Storage:** Implemented secure hashing using `bcrypt` with appropriate work factors (salts) to prevent plain-text exposure and rainbow table attacks.
+- **Server-Side Validation:** Ensured all incoming user inputs are validated and sanitized on the server side to protect against injection and malformed requests.
+
+## 2. Secure Cookies & Session Management
+- **Cookie Configuration:** Configured session cookies with strict security flags:
+  - `HttpOnly`: Prevents client-side scripts (XSS) from accessing session cookies.
+  - `Secure`: Ensures cookies are transmitted only over encrypted HTTPS connections.
+  - `SameSite=Strict`: Protects against Cross-Site Request Forgery (CSRF) attacks.
+- **Session Expiry & Logout:** Implemented token expiration timeouts and a proper server-side logout route to clear active sessions.
+
+## 3. Rate Limiting & Generic Error Handling
+- **Rate Limiting:** Applied request rate-limiting on sensitive endpoints (such as `/login` and `/password-reset`) to stop automated brute-force attacks.
+- **Generic Responses:** Configured login failure messages to return generic responses (e.g., *"Invalid username or password"*) rather than revealing whether a specific account exists.
+
